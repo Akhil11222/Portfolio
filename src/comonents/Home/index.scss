@@ -9,9 +9,9 @@
   }
 
   h1 {
-    color: #1F2937;
-    font-size: 56px;
-    line-height: 53px;
+    color: #E2E8F0; /* Changed from #1F2937 for dark background */
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: clamp(40px, 5vw, 53px);
     margin: 0;
     font-family: "Coolvetica";
     font-weight: 400;
@@ -20,7 +20,7 @@
       content: "<h1>";
       font-family: "La Belle Aurore", cursive;
       color: #5C7CFA;
-      font-size: 18px;
+      font-size: clamp(16px, 2vw, 18px);
       position: absolute;
       margin-top: -40px;
       left: 15px;
@@ -31,7 +31,7 @@
       content: "<h1/>";
       font-family: "La Belle Aurore", cursive;
       color: #5C7CFA;
-      font-size: 18px;
+      font-size: clamp(16px, 2vw, 18px);
       position: absolute;
       margin-top: 18px;
       margin-left: 20px;
@@ -42,7 +42,7 @@
     img {
       margin-left: 20px;
       opacity: 0;
-      width: 32px;
+      width: clamp(24px, 4vw, 32px);
       height: auto;
       animation: rotateIn 1s linear both;
       animation-delay: 1.4s;
@@ -53,15 +53,15 @@
     color: #6B7280;
     margin-top: 20px;
     font-weight: 400;
-    font-size: 11px;
+    font-size: clamp(10px, 2vw, 11px);
     font-family: sans-serif;
     letter-spacing: 3px;
     animation: fadeIn 1s 1.8s backwards;
   }
 
   .flat-button {
-    color:#5C7CFA;
-    font-size: 13px;
+    color: #5C7CFA;
+    font-size: clamp(12px, 2vw, 13px);
     font-weight: 400;
     letter-spacing: 4px;
     font-family: sans-serif;
@@ -72,6 +72,10 @@
     float: left;
     animation: fadeIn 1s 1.8s backwards;
     white-space: nowrap;
+    min-height: 44px; /* Added for touch accessibility */
+    display: flex; /* Added for centering */
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background: #5C7CFA;
@@ -120,5 +124,32 @@
     bottom: auto;
     left: 0;
     margin: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-page .text-zone {
+    padding: 20px;
+  }
+
+  .home-page h1 {
+    font-size: clamp(30px, 6vw, 40px);
+    line-height: clamp(30px, 6vw, 40px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-page .text-zone {
+    padding: 10px; /* Reduced padding for small screens */
+  }
+
+  .home-page h1 {
+    font-size: clamp(24px, 5vw, 32px); /* Smaller for small screens */
+    line-height: clamp(24px, 5vw, 32px);
+  }
+
+  .home-page .flat-button {
+    width: 100px; /* Smaller button width */
+    padding: 8px 12px; /* Adjusted padding */
   }
 }

@@ -35,3 +35,20 @@
   stroke: #ffd700;
   stroke-width: 10;
 }
+
+@media screen and (max-width: 768px) {
+  .logo-container {
+    width: clamp(150px, 40vw, 200px);
+    height: auto;
+    right: 0;
+    left: 0;
+    top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo-container {
+    width: clamp(120px, 30vw, 150px); /* Smaller for small screens */
+    top: 10px; /* Closer to top */
+  }
+}

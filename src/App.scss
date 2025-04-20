@@ -19,6 +19,7 @@ $primary-color: #5C7CFA;
 input,
 textarea {
   font-family: "Helvetica Neue";
+  box-sizing: border-box;
 }
 
 
@@ -34,8 +35,22 @@ textarea {
   margin: auto;
   top: 0;
   bottom: 0;
-  width: 50px;
-  height: 50px;
-  animation: fadeOut 1s 1s;
+  width: clamp(40px, 10vw, 50px);
+  height: clamp(40px, 10vw, 50px);
+   animation: fadeOut 0.8s 0.8s;
   animation-fill-mode: forwards;
+}
+
+@media screen and (max-width: 768px) {
+  .loader-active {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .loader-active {
+    width: 36px; /* Slightly smaller for small screens */
+    height: 36px;
+  }
 }

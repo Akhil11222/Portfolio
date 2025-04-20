@@ -38,10 +38,11 @@
     border: 0;
     background: #1E293B;
     height: 50px;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     color: #FFFFFF;
     padding: 0 20px;
     box-sizing: border-box;
+    min-height: 44px; /* Added for touch accessibility */
   }
 
   textarea {
@@ -49,7 +50,7 @@
     border: 0;
     background: #1E293B;
     height: 50px;
-    font-size: 16px;
+    font-size: clamp(14px, 2vw, 16px);
     color: #FFFFFF;
     padding: 20px;
     box-sizing: border-box;
@@ -58,7 +59,7 @@
 
   .flat-button {
     color: #5C7CFA;
-    font-size: 11px;
+    font-size: clamp(10px, 2vw, 11px);
     letter-spacing: 3px;
     text-decoration: none;
     padding: 8px 10px;
@@ -69,6 +70,10 @@
     float: right;
     text-align: center;
     margin-right: 10px;
+    min-height: 44px; /* Added for touch accessibility */
+    display: flex; /* Added for centering text */
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -120,8 +125,51 @@
     width: 100%;
     height: 400px;
   }
-  
+
   .info-map {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contact-form {
+    margin-top: 10px;
+
+    ul li.half {
+      width: 100%;
+      margin-left: 0;
+      float: none;
+    }
+
+    .flat-button {
+      float: none;
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px; /* Increased padding for touch */
+    }
+  }
+
+  .map-wrap {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-form {
+    input[type='text'],
+    input[type='email'],
+    textarea {
+      font-size: 14px; /* Slightly smaller for small screens */
+      padding: 10px; /* Reduced padding for fit */
+    }
+
+    .flat-button {
+      font-size: 10px;
+      padding: 8px 16px;
+    }
+  }
+
+  .map-wrap {
+    height: 250px; /* Further reduced for small screens */
   }
 }

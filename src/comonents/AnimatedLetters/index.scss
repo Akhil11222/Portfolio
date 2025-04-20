@@ -24,3 +24,29 @@
     animation-delay: #{$i / 10}s;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .text-animate {
+    min-width: 8px;
+    animation-duration: 0.8s;
+  }
+
+  @for $i from 1 through 35 {
+    .text-animate._#{$i} {
+      animation-delay: #{$i / 15}s;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .text-animate {
+    min-width: 6px; /* Tighter spacing for small screens */
+    animation-duration: 0.6s; /* Faster animation */
+  }
+
+  @for $i from 1 through 35 {
+    .text-animate._#{$i} {
+      animation-delay: #{$i / 20}s; /* Even tighter delays */
+    }
+  }
+}

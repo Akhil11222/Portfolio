@@ -9,7 +9,8 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
-const Sidebar = () => (
+const Sidebar = () => {
+  return(
   <div className="nav-bar">
     <Link className="logo" to="/">
       <img src={LogoS} alt="logo" />
@@ -57,6 +58,7 @@ const Sidebar = () => (
       </li>
     </ul>
   </div>
-);
+  );
+};
 
 export default Sidebar;
