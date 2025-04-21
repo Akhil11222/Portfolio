@@ -108,50 +108,53 @@
 
 @media screen and (max-width: 1200px) {
   .page {
-    position: initial;
+    position: initial; /* RESPONSIVE: Allows content to stack naturally below header */
+  }
+
+  .tags {
+    display: none; /* RESPONSIVE: Hide decorative tags on smaller screens to reduce clutter */
   }
 
   .container {
-    position: initial;
-    height: auto;
-    min-height: auto;
+    position: initial; /* RESPONSIVE: Switches to natural flow for stacking */
+    height: auto; /* RESPONSIVE: Adapts height to content */
+    min-height: auto; /* RESPONSIVE: Removes fixed min-height for flexibility */
 
     &.contact-page,
     &.about-page {
       .text-zone {
-        position: initial;
-        transform: none;
-        width: 100%;
-        display: block;
-        padding: 20px;
-        box-sizing: border-box;
+        position: initial; /* RESPONSIVE: Removes absolute positioning */
+        transform: none; /* RESPONSIVE: Removes transform for natural layout */
+        width: 100%; /* RESPONSIVE: Full width on smaller screens */
+        display: block; /* RESPONSIVE: Stacks content vertically */
+        padding: 20px; /* RESPONSIVE: Adds padding for spacing */
+        box-sizing: border-box; /* RESPONSIVE: Ensures padding doesn’t overflow */
       }
     }
   }
 
   .stage-cube-cont {
-    position: initial;
-    width: 100%;
-    height: 0%;
-    overflow: visible;
+    position: initial; /* RESPONSIVE: Allows cube to flow naturally */
+    width: 100%; /* RESPONSIVE: Full width on smaller screens */
+    height: 0%; /* RESPONSIVE: Prevents unnecessary space */
+    overflow: visible; /* RESPONSIVE: Ensures content isn’t clipped */
   }
 }
 
 @media screen and (max-width: 768px) {
   .tags {
-    left: 20px;
-    font-size: 16px;
+    display: none; /* RESPONSIVE: Already hidden at 1200px, repeated for clarity */
   }
 
   .container.about-page,
   .container.contact-page {
     h1 {
-      font-size: clamp(30px, 6vw, 40px);
-      margin-bottom: 20px;
+      font-size: clamp(30px, 6vw, 40px); /* RESPONSIVE: Smaller heading on medium screens */
+      margin-bottom: 20px; /* RESPONSIVE: Reduced spacing */
     }
 
     p {
-      font-size: 12px;
+      font-size: 12px; /* RESPONSIVE: Fixed smaller size for readability */
       color: #FFFFFF;
     }
   }
@@ -159,23 +162,22 @@
 
 @media screen and (max-width: 480px) {
   .tags {
-    left: 10px; /* Closer to edge for small screens */
-    font-size: 14px; /* Smaller font */
+    display: none; /* RESPONSIVE: Already hidden at 1200px, repeated for clarity */
   }
 
   .container.about-page,
   .container.contact-page {
     h1 {
-      font-size: clamp(24px, 5vw, 32px); /* Smaller for small screens */
-      left: 0; /* Remove offset for better alignment */
+      font-size: clamp(24px, 5vw, 32px); /* RESPONSIVE: Even smaller heading on small screens */
+      left: 0; /* RESPONSIVE: Removes offset for better alignment */
     }
 
     p {
-      font-size: 11px; /* Smaller for small screens */
+      font-size: 11px; /* RESPONSIVE: Smaller text for small screens */
     }
 
     .text-zone {
-      padding: 10px; /* Reduced padding */
+      padding: 10px; /* RESPONSIVE: Reduced padding for tighter layout */
     }
   }
 }
