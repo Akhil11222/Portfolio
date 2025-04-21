@@ -2,51 +2,51 @@
   display: inline-block;
   opacity: 0;
   animation: bounceIn;
-  animation-duration: 1s;
-  animation-delay: 1s;
+  animation-duration: 0.7s; /* RESPONSIVE: Faster for mobile performance */
+  animation-delay: 0.7s;
   animation-fill-mode: forwards;
-  min-width: 10px;
+  min-width: clamp(5px, 0.8vw, 7px); /* RESPONSIVE: Tighter spacing */
 }
 
 .text-animate-hover {
-  min-width: 10px;
+  min-width: clamp(5px, 0.8vw, 7px);
   display: inline-block;
   animation-fill-mode: both;
 
   &:hover {
-    animation: rubberBand 1s;
+    animation: rubberBand 0.7s; /* RESPONSIVE: Faster hover animation */
     color: #5C7CFA;
   }
 }
 
 @for $i from 1 through 35 {
   .text-animate._#{$i} {
-    animation-delay: #{$i / 10}s;
+    animation-delay: #{$i / 14}s; /* RESPONSIVE: Faster delays for smoother effect */
   }
 }
 
 @media screen and (max-width: 768px) {
   .text-animate {
-    min-width: 8px;
-    animation-duration: 0.8s;
+    min-width: clamp(4px, 0.7vw, 6px); /* RESPONSIVE: Tighter for tablets */
+    animation-duration: 0.5s; /* RESPONSIVE: Faster animation */
   }
 
   @for $i from 1 through 35 {
     .text-animate._#{$i} {
-      animation-delay: #{$i / 15}s;
+      animation-delay: #{$i / 20}s; /* RESPONSIVE: Tighter delays */
     }
   }
 }
 
 @media screen and (max-width: 480px) {
   .text-animate {
-    min-width: 6px; /* Tighter spacing for small screens */
-    animation-duration: 0.6s; /* Faster animation */
+    min-width: clamp(3px, 0.6vw, 5px); /* RESPONSIVE: Tightest for phones */
+    animation-duration: 0.4s; /* RESPONSIVE: Fastest for performance */
   }
 
   @for $i from 1 through 35 {
     .text-animate._#{$i} {
-      animation-delay: #{$i / 20}s; /* Even tighter delays */
+      animation-delay: #{$i / 25}s; /* RESPONSIVE: Tightest delays */
     }
   }
 }

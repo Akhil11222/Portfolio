@@ -1,10 +1,10 @@
 html {
-  font-size: clamp(50%, 5vw, 62.5%);
+  font-size: clamp(45%, 4.5vw, 60%); /* RESPONSIVE: Adjusted for smooth scaling across devices */
 }
 
 body {
   margin: 0;
-  font: 300 clamp(10px, 2vw, 11px)/1.4 "Helvetica Neue", "sans-serif";
+  font: 300 clamp(9px, 1.6vw, 10px)/1.4 "Helvetica Neue", "sans-serif"; /* RESPONSIVE: Slightly smaller font */
   color: #1F2937;
   background: #111827;
   overflow-x: hidden;
@@ -12,16 +12,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  min-height: 100vh; /* RESPONSIVE: Ensure full viewport height */
 }
 
 @media screen and (max-width: 768px) {
   html {
-    font-size: 55%;
+    font-size: clamp(40%, 4vw, 55%); /* RESPONSIVE: Smaller for tablets */
   }
 }
 
 @media screen and (max-width: 480px) {
   html {
-    font-size: 50%; /* Added for smaller screens to prevent text from being too large */
+    font-size: clamp(35%, 3.5vw, 50%); /* RESPONSIVE: Smallest for phones */
   }
 }

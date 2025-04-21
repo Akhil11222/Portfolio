@@ -6,12 +6,14 @@
     transform: translateY(-50%);
     width: 40%;
     max-height: 90%;
+    z-index: 5; /* RESPONSIVE: High z-index to stay above logo and sidebar */
+    padding-top: 0; /* RESPONSIVE: No extra padding on large screens */
   }
 
   h1 {
-    color: #E2E8F0; /* Changed from #1F2937 for dark background */
-    font-size: clamp(40px, 5vw, 56px);
-    line-height: clamp(40px, 5vw, 53px);
+    color: #E2E8F0;
+    font-size: clamp(34px, 4vw, 48px); /* RESPONSIVE: Scaled font */
+    line-height: clamp(34px, 4vw, 46px);
     margin: 0;
     font-family: "Coolvetica";
     font-weight: 400;
@@ -20,10 +22,10 @@
       content: "<h1>";
       font-family: "La Belle Aurore", cursive;
       color: #5C7CFA;
-      font-size: clamp(16px, 2vw, 18px);
+      font-size: clamp(13px, 1.6vw, 15px);
       position: absolute;
-      margin-top: -40px;
-      left: 15px;
+      margin-top: -35px;
+      left: 10px;
       opacity: 0.6;
     }
 
@@ -31,18 +33,18 @@
       content: "<h1/>";
       font-family: "La Belle Aurore", cursive;
       color: #5C7CFA;
-      font-size: clamp(16px, 2vw, 18px);
+      font-size: clamp(13px, 1.6vw, 15px);
       position: absolute;
-      margin-top: 18px;
-      margin-left: 20px;
+      margin-top: 15px;
+      margin-left: 15px;
       animation: fadeIn 1s 1.7s backwards;
       opacity: 0.6;
     }
 
     img {
-      margin-left: 20px;
+      margin-left: 15px;
       opacity: 0;
-      width: clamp(24px, 4vw, 32px);
+      width: clamp(18px, 3vw, 26px);
       height: auto;
       animation: rotateIn 1s linear both;
       animation-delay: 1.4s;
@@ -51,29 +53,29 @@
 
   h2 {
     color: #6B7280;
-    margin-top: 20px;
+    margin-top: 15px;
     font-weight: 400;
-    font-size: clamp(10px, 2vw, 11px);
+    font-size: clamp(8px, 1.6vw, 9px);
     font-family: sans-serif;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     animation: fadeIn 1s 1.8s backwards;
   }
 
   .flat-button {
     color: #5C7CFA;
-    font-size: clamp(12px, 2vw, 13px);
+    font-size: clamp(10px, 1.6vw, 11px);
     font-weight: 400;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     font-family: sans-serif;
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 8px 16px;
     border: 1px solid #5C7CFA;
-    margin-top: 25px;
+    margin-top: 20px;
     float: left;
     animation: fadeIn 1s 1.8s backwards;
     white-space: nowrap;
-    min-height: 44px; /* Added for touch accessibility */
-    display: flex; /* Added for centering */
+    min-height: 44px;
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -88,36 +90,40 @@
   .tags,
   .home-page h1:before,
   .home-page h1:after {
-    display: none;
+    display: none; /* RESPONSIVE: Remove decorative tags for simplicity */
   }
 
   .home-page .text-zone {
-    position: initial;
+    position: relative; /* RESPONSIVE: Stack above logo, no overlap with sidebar */
     width: 100%;
     transform: none;
-    padding: 10px;
+    padding: 65px 20px 20px; /* RESPONSIVE: Add top padding to clear 50px sidebar */
     box-sizing: border-box;
+    text-align: center;
+    z-index: 5; /* RESPONSIVE: Above logo and sidebar */
   }
 
   .home-page .flat-button {
     float: none;
     display: block;
-    margin: 20px auto 0 auto;
-    width: 124px;
+    margin: 15px auto 0;
+    width: 130px; /* RESPONSIVE: Touch-friendly */
   }
 
-  .logo-container {
-    position: relative;
-    width: 100px;
+  .home-page .logo-container {
+    position: absolute; /* RESPONSIVE: Background logo */
+    width: clamp(180px, 45vw, 250px);
     height: auto;
-    top: 50px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 0;
-    box-sizing: border-box;
-    margin: auto;
     left: 0;
+    margin: auto;
+    opacity: 0.25; /* RESPONSIVE: Faded for background */
+    z-index: 1; /* RESPONSIVE: Below text, above page background */
   }
 
-  .logo-container svg {
+  .home-page .logo-container svg {
     position: absolute;
     top: auto;
     right: auto;
@@ -129,27 +135,42 @@
 
 @media screen and (max-width: 768px) {
   .home-page .text-zone {
-    padding: 20px;
+    padding: 60px 15px 15px; /* RESPONSIVE: Slightly less padding, clear sidebar */
   }
 
   .home-page h1 {
-    font-size: clamp(30px, 6vw, 40px);
-    line-height: clamp(30px, 6vw, 40px);
+    font-size: clamp(26px, 4.5vw, 34px);
+    line-height: clamp(26px, 4.5vw, 34px);
+  }
+
+  .home-page .logo-container {
+    width: clamp(140px, 35vw, 180px);
+    opacity: 0.2;
   }
 }
 
 @media screen and (max-width: 480px) {
   .home-page .text-zone {
-    padding: 10px; /* Reduced padding for small screens */
+    padding: 55px 10px 10px; /* RESPONSIVE: Minimal padding, clear sidebar */
   }
 
   .home-page h1 {
-    font-size: clamp(24px, 5vw, 32px); /* Smaller for small screens */
-    line-height: clamp(24px, 5vw, 32px);
+    font-size: clamp(20px, 4vw, 28px);
+    line-height: clamp(20px, 4vw, 28px);
+  }
+
+  .home-page h2 {
+    font-size: clamp(7px, 1.4vw, 8px);
   }
 
   .home-page .flat-button {
-    width: 100px; /* Smaller button width */
-    padding: 8px 12px; /* Adjusted padding */
+    width: 110px;
+    padding: 7px 10px;
+    font-size: clamp(9px, 1.4vw, 10px);
+  }
+
+  .home-page .logo-container {
+    width: clamp(100px, 30vw, 140px);
+    opacity: 0.15; /* RESPONSIVE: Most faded for text clarity */
   }
 }

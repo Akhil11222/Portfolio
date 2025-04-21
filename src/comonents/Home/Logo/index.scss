@@ -1,7 +1,7 @@
 .logo-container {
-  z-index: 0;
-  width: 400px;
-  height: 609px;
+  z-index: 1; /* RESPONSIVE: Low z-index to stay below text and sidebar */
+  width: clamp(280px, 35vw, 380px);
+  height: auto;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -27,28 +27,50 @@
     width: 100%;
     opacity: 0;
     transform: rotateZ(30deg) !important;
-    z-index: 1;
+    z-index: 2; /* RESPONSIVE: Above SVG, below text */
   }
 }
 
 .svg-container {
   stroke: #ffd700;
-  stroke-width: 10;
+  stroke-width: 8;
+}
+
+@media screen and (max-width: 1200px) {
+  .logo-container {
+    width: clamp(180px, 45vw, 250px); /* RESPONSIVE: Smaller for mobile */
+    height: auto;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.25; /* RESPONSIVE: Faded for background */
+    z-index: 1; /* RESPONSIVE: Below text and sidebar */
+  }
+
+  .svg-container {
+    stroke-width: 6;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .logo-container {
-    width: clamp(150px, 40vw, 200px);
-    height: auto;
-    right: 0;
-    left: 0;
-    top: 20px;
+    width: clamp(140px, 35vw, 180px);
+    opacity: 0.2;
+  }
+
+  .svg-container {
+    stroke-width: 6;
   }
 }
 
 @media screen and (max-width: 480px) {
   .logo-container {
-    width: clamp(120px, 30vw, 150px); /* Smaller for small screens */
-    top: 10px; /* Closer to top */
+    width: clamp(100px, 30vw, 140px);
+    opacity: 0.15; /* RESPONSIVE: Most faded */
+  }
+
+  .svg-container {
+    stroke-width: 5;
   }
 }

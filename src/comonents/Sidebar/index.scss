@@ -2,9 +2,9 @@
   background: #1E293B;
   width: 60px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 1000; /* RESPONSIVE: Above all content */
   min-height: 500px;
 
   .logo {
@@ -14,11 +14,11 @@
     img {
       display: block;
       margin: 8px auto;
-      width: clamp(30px, 8vw, 38px);
+      width: clamp(26px, 6vw, 34px); /* RESPONSIVE: Dynamic logo size */
       height: auto;
 
       &.sub-logo {
-        width: clamp(40px, 10vw, 50px);
+        width: clamp(34px, 8vw, 46px); /* RESPONSIVE: Adjusted subtitle logo */
       }
     }
   }
@@ -33,14 +33,14 @@
     width: 100%;
 
     a {
-      font-size: clamp(18px, 4vw, 22px);
+      font-size: clamp(15px, 3vw, 18px); /* RESPONSIVE: Scaled font size */
       color: #6B7280;
       display: block;
       line-height: 51px;
       height: 51px;
       position: relative;
       text-decoration: none;
-      min-height: 44px; /* Added for touch accessibility */
+      min-height: 44px; /* RESPONSIVE: Touch-friendly height */
 
       i {
         transition: all 0.3s ease-out;
@@ -60,7 +60,7 @@
 
       &:after {
         content: '';
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 2px;
         position: absolute;
         bottom: 0;
@@ -111,10 +111,10 @@
       a {
         padding: 7px 0;
         display: block;
-        font-size: clamp(12px, 3vw, 15px);
+        font-size: clamp(10px, 2vw, 13px); /* RESPONSIVE: Scaled social icons */
         line-height: 16px;
         color: #6B7280;
-        min-height: 44px; /* Added for touch accessibility */
+        min-height: 44px; /* RESPONSIVE: Touch-friendly */
       }
 
       &:hover {
@@ -124,6 +124,13 @@
       }
     }
   }
+
+  .hamburger-icon,
+  .close-icon {
+    display: none; /* RESPONSIVE: Hide icons on large screens */
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* RESPONSIVE: Smooth visibility */
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -132,12 +139,12 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 60px;
+    height: 50px; /* RESPONSIVE: Fixed header height */
     width: 100%;
     min-height: auto;
     display: flex;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000; /* RESPONSIVE: Above all content */
 
     .logo {
       display: block;
@@ -148,40 +155,50 @@
     }
 
     ul {
-      display: none;
+      display: flex; /* RESPONSIVE: Show social links in header */
+      position: absolute;
+      bottom: auto;
+      right: 50px; /* RESPONSIVE: Before hamburger */
+      top: 50%;
+      transform: translateY(-50%);
+      li a {
+        padding: 0 8px; /* RESPONSIVE: Tighter padding */
+        font-size: clamp(12px, 2.5vw, 14px); /* RESPONSIVE: Visible icons */
+      }
     }
 
     nav {
-      display: none;
+      display: none; /* RESPONSIVE: Hide nav by default */
       width: 100%;
-      top: 0;
+      top: 50px;
       left: 0;
       background: #1E293B;
-      height: 100vh;
+      height: calc(100vh - 50px); /* RESPONSIVE: Full height minus header */
       margin: 0;
-      z-index: 2;
+      z-index: 999; /* RESPONSIVE: Below header */
       position: fixed;
 
       &.mobile-show {
-        display: flex;
+        display: flex; /* RESPONSIVE: Show nav when open */
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        animation: slideIn 0.3s ease-in; /* RESPONSIVE: Smooth slide-in */
       }
 
       a {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: clamp(16px, 4vw, 18px);
-        height: 60px;
+        font-size: clamp(13px, 3vw, 15px); /* RESPONSIVE: Smaller links */
+        height: 50px;
       }
 
       a:after {
         opacity: 1;
         position: initial;
         width: auto;
-        margin-left: 10px;
+        margin-left: 8px; /* RESPONSIVE: Tighter spacing */
       }
 
       a svg {
@@ -189,58 +206,107 @@
       }
     }
 
-    .close-icon {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: block;
-      font-size: 24px;
-      color: #FFFFFF;
-      cursor: pointer;
-    }
-
     .hamburger-icon {
-      display: block;
+      display: flex; /* RESPONSIVE: Show hamburger when menu closed */
       position: absolute;
-      right: 15px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 24px;
+      font-size: 20px;
       color: #FFFFFF;
-      cursor: pointer;
-      min-height: 44px; /* Added for touch accessibility */
-      min-width: 44px; /* Added for touch accessibility */
-      display: flex; /* Added for centering */
+      min-height: 44px;
+      min-width: 44px;
       align-items: center;
       justify-content: center;
+      opacity: 1; /* RESPONSIVE: Ensure visibility */
     }
+
+    .close-icon {
+      display: none; /* RESPONSIVE: Hide close icon when menu closed */
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 20px;
+      color: #FFFFFF;
+      min-height: 44px;
+      min-width: 44px;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; /* RESPONSIVE: Hidden by default */
+    }
+
+    nav.mobile-show {
+      .hamburger-icon {
+        display: none; /* RESPONSIVE: Hide hamburger when menu open */
+        opacity: 0; /* RESPONSIVE: Ensure hidden */
+      }
+
+      .close-icon {
+        display: flex; /* RESPONSIVE: Show close icon when menu open */
+        opacity: 1; /* RESPONSIVE: Ensure visible */
+      }
+    }
+  }
+
+  /* RESPONSIVE: Slide-in animation for mobile menu */
+  @keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .nav-bar nav a {
-    font-size: 16px;
-    line-height: 40px;
-    height: 40px;
-  }
+  .nav-bar {
+    height: 45px; /* RESPONSIVE: Smaller header */
+    .logo img {
+      width: clamp(22px, 5vw, 28px);
+      &.sub-logo {
+        width: clamp(30px, 7vw, 40px);
+      }
+    }
+
+    nav a {
+      font-size: clamp(12px, 2.5vw, 14px);
+      line-height: 45px;
+      height: 45px;
+    }
+
+    ul {
+      right: 45px; /* RESPONSIVE: Adjust position */
+      li a {
+        font-size: clamp(11px, 2vw, 13px);
+      }
+    }
+
+    .hamburger-icon,
+    nav.mobile-show .close-icon {
+      font-size: 18px; /* RESPONSIVE: Smaller icons */
+    }
+}
 }
 
 @media screen and (max-width: 480px) {
   .nav-bar {
-    height: 50px; /* Slightly smaller bar */
+    height: 40px; /* RESPONSIVE: Smallest header */
     .logo img {
-      width: clamp(24px, 6vw, 30px); /* Smaller logo */
+      width: clamp(20px, 4.5vw, 26px);
       &.sub-logo {
-        width: clamp(32px, 8vw, 40px);
+        width: clamp(28px, 6vw, 36px);
       }
     }
 
-    .hamburger-icon {
-      font-size: 20px; /* Smaller icon */
+    ul {
+      right: 40px;
+      li a {
+        padding: 0 6px;
+        font-size: clamp(10px, 1.8vw, 12px);
+      }
     }
 
-    .close-icon {
-      font-size: 20px; /* Smaller icon */
+    .hamburger-icon,
+    nav.mobile-show .close-icon {
+      font-size: 16px;
+      right: 10px;
     }
-  }
+}
 }

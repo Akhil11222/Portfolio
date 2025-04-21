@@ -29,28 +29,34 @@ textarea {
 
 .loader-active {
   display: block;
-  position: absolute;
+  position: fixed; /* RESPONSIVE: Fixed for consistent positioning */
   left: 0;
   right: 0;
   margin: auto;
   top: 0;
   bottom: 0;
-  width: clamp(40px, 10vw, 50px);
-  height: clamp(40px, 10vw, 50px);
-   animation: fadeOut 0.8s 0.8s;
+  width: clamp(32px, 7vw, 40px); /* RESPONSIVE: Smaller range for better fit */
+  height: clamp(32px, 7vw, 40px);
+  animation: fadeOut 0.8s 0.8s;
   animation-fill-mode: forwards;
+}
+
+/* RESPONSIVE: Ensure full viewport height for content */
+html, body, #root, .App {
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 768px) {
   .loader-active {
-    width: 40px;
-    height: 40px;
+    width: clamp(28px, 6vw, 36px); /* RESPONSIVE: Smaller for tablets */
+    height: clamp(28px, 6vw, 36px);
   }
 }
 
 @media screen and (max-width: 480px) {
   .loader-active {
-    width: 36px; /* Slightly smaller for small screens */
-    height: 36px;
+    width: clamp(24px, 5vw, 32px); /* RESPONSIVE: Smallest for phones */
+    height: clamp(24px, 5vw, 32px);
   }
 }

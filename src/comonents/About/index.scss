@@ -1,3 +1,17 @@
+.about-page {
+  z-index: 5; /* RESPONSIVE: Above footer tags, below sidebar */
+}
+
+.text-zone {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  max-height: 90%;
+  z-index: 5; /* RESPONSIVE: Above cube and footer tags */
+}
+
 .stage-cube-cont {
   width: 50%;
   height: 100%;
@@ -6,39 +20,40 @@
   margin-left: 0;
   position: absolute;
   right: 0;
-  overflow: hidden;
+  overflow: visible; /* RESPONSIVE: Prevent clipping of cube */
+  z-index: 3; /* RESPONSIVE: Above footer tags */
 }
 
 .cubespinner {
   animation-name: spincube;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  animation-duration: 12s;
+  animation-duration: 10s;
   transform-style: preserve-3d;
   transform-origin: 100px 100px 0;
   margin-left: calc(50% - 100px);
-  will-change: transform; /* Added for animation performance */
+  will-change: transform;
 
   div {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border: 1px solid #6B7280;
-    background: rgba(255, 255, 255, 0.25); /* Adjusted for dark background contrast */
+    background: rgba(255, 255, 255, 0.25);
     text-align: center;
-    font-size: 100px;
+    font-size: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 20px 0px rgba(92, 124, 250, 0.3);
   }
 
-  .face1 { transform: translateZ(100px); color: #24292F; }
-  .face2 { transform: rotateY(90deg) translateZ(100px); color: #f06529; }
-  .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(100px); color: #28a4d9; }
-  .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(100px); color: #5ed4f4; }
-  .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(100px); color: #efd81d; }
-  .face6 { transform: rotateX(-90deg) translateZ(100px); color: #ec4d28; }
+  .face1 { transform: translateZ(90px); color: #24292F; }
+  .face2 { transform: rotateY(90deg) translateZ(90px); color: #f06529; }
+  .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(90px); color: #28a4d9; }
+  .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(90px); color: #5ed4f4; }
+  .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(90px); color: #efd81d; }
+  .face6 { transform: rotateX(-90deg) translateZ(90px); color: #ec4d28; }
 }
 
 @keyframes spincube {
@@ -50,20 +65,102 @@
   83% { transform: rotateX(90deg); }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
+  .about-page {
+    padding-top: 70px; /* RESPONSIVE: Clear 50px sidebar header + buffer */
+    box-sizing: border-box;
+    z-index: 5; /* RESPONSIVE: Above footer tags */
+  }
+
+  .text-zone {
+    position: relative; /* RESPONSIVE: Stack above cube */
+    width: 100%;
+    transform: none;
+    padding: 0 20px 20px; /* RESPONSIVE: No top padding, .about-page handles it */
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 5; /* RESPONSIVE: Above cube and footer tags */
+  }
+
   .stage-cube-cont {
     width: 100%;
     height: auto;
-    padding-top: 10%;
-    position: relative;
+    padding-top: 0; /* RESPONSIVE: No extra padding */
+    position: relative; /* RESPONSIVE: Stack below text */
     right: auto;
+    margin-top: 10px; /* RESPONSIVE: Space after text */
+    z-index: 3; /* RESPONSIVE: Above footer tags */
+    overflow: visible;
   }
 
   .cubespinner {
-    transform-origin: 50px 50px 0;
-    margin-left: calc(50% - 50px);
+    transform-origin: 70px 70px 0;
+    margin-left: calc(50% - 70px);
+    transform: scale(0.6);
+    animation-duration: 8s;
+
+    div {
+      width: 140px;
+      height: 140px;
+      font-size: 70px;
+    }
+
+    .face1 { transform: translateZ(70px); }
+    .face2 { transform: rotateY(90deg) translateZ(70px); }
+    .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(70px); }
+    .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(70px); }
+    .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(70px); }
+    .face6 { transform: rotateX(-90deg) translateZ(70px); }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-page {
+    padding-top: 65px; /* RESPONSIVE: Clear 45px sidebar */
+  }
+
+  .text-zone {
+    padding: 0 15px 15px;
+  }
+
+  .stage-cube-cont {
+    margin-top: 8px;
+  }
+
+  .cubespinner {
     transform: scale(0.5);
-    animation-duration: 8s; /* Shortened for mobile performance */
+    margin-left: calc(50% - 60px);
+    div {
+      width: 120px;
+      height: 120px;
+      font-size: 60px;
+    }
+    .face1 { transform: translateZ(60px); }
+    .face2 { transform: rotateY(90deg) translateZ(60px); }
+    .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(60px); }
+    .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(60px); }
+    .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px); }
+    .face6 { transform: rotateX(-90deg) translateZ(60px); }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-page {
+    padding-top: 60px; /* RESPONSIVE: Clear 40px sidebar */
+  }
+
+  .text-zone {
+    padding: 0 10px 10px;
+  }
+
+  .stage-cube-cont {
+    margin-top: 6px;
+  }
+
+  .cubespinner {
+    transform: scale(0.4);
+    margin-left: calc(50% - 50px);
+    animation-duration: 7s;
     div {
       width: 100px;
       height: 100px;
@@ -75,23 +172,5 @@
     .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(50px); }
     .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(50px); }
     .face6 { transform: rotateX(-90deg) translateZ(50px); }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .cubespinner {
-    transform: scale(0.4);
-    margin-left: calc(50% - 40px); /* Adjusted for centering */
-    div {
-      font-size: 40px;
-      width: 80px; /* Smaller for very small screens */
-      height: 80px;
-    }
-    .face1 { transform: translateZ(40px); }
-    .face2 { transform: rotateY(90deg) translateZ(40px); }
-    .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(40px); }
-    .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(40px); }
-    .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(40px); }
-    .face6 { transform: rotateX(-90deg) translateZ(40px); }
   }
 }
